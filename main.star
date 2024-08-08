@@ -33,6 +33,17 @@ def run(plan, args):
     l1_priv_key = l1.pre_funded_accounts[
         12
     ].private_key  # reserved for L2 contract deployers
+    
+    ethos_priv_key = l1.pre_funded_accounts[
+        13
+    ] # reserved for Ethos Funding
+    
+    # # m/44'/60'/0'/0/12
+    # new_prefunded_account(
+    #     "0x589A698b7b7dA0Bec545177D3963A2741105C7C9",
+    #     "eaba42282ad33c8ef2524f07277c03a776d98ae19f581990ce75becb7cfa1c23",
+    # ),
+    
     l1_config_env_vars = get_l1_config(
         all_l1_participants, l1_network_params, l1_network_id
     )
@@ -45,20 +56,20 @@ def run(plan, args):
 
     # Deploy L2s
     plan.print("Deploying a local L2")
-    if type(optimism_args) == "dict":
+    if type(infinity_args) == "dict":
         l2_services_suffix = ""  # no suffix if one l2
         l2_launcher.launch_l2(
             plan,
             l2_services_suffix,
-            optimism_args,
+            infinity_args,
             l1_config_env_vars,
             l1_priv_key,
             all_l1_participants[0].el_context,
         )
-    elif type(optimism_args) == "list":
+    elif type(infinity_args) == "list":
         seen_names = {}
         seen_network_ids = {}
-        for l2_num, l2_args in enumerate(optimism_args):
+        for l2_num, l2_args in enumerate(infinity_args):
             name = l2_args["network_params"]["name"]
             network_id = l2_args["network_params"]["network_id"]
             if name in seen_names:

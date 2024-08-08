@@ -1,7 +1,7 @@
 ## Welcome to Optimism Package
 The default package for Optimism
 ```yaml
-optimism_package:
+infinity_package:
   participants:
     - el_type: op-geth
       cl_type: op-node
@@ -107,7 +107,7 @@ infinity_package:
 It is required you to launch an L1 Ethereum node to interact with the L2 network. You can use the `ethereum_package` to launch an Ethereum node. The `ethereum_package` configuration is as follows:
 
 ```yaml
-optimism_package:
+infinity_package:
   participants:
     - el_type: op-geth
       cl_type: op-node
@@ -127,7 +127,7 @@ ethereum_package:
 Additionally, you can spin up multiple L2 networks by providing a list of L2 configuration parameters like so:
 
 ```yaml
-optimism_package:
+infinity_package:
   - participants:
       - el_type: op-geth
     network_params:
